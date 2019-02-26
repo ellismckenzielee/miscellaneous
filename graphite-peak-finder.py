@@ -37,10 +37,10 @@ peaks = scipy.signal.find_peaks(image_histogram, prominence=500)[0]
 
 #Output data to file (If user chooses to)
 output_hist = pd.DataFrame({'Histogram': image_histogram})
-output_hist.to_csv(folder_path + filename + '.csv', index=False)
+output_hist.to_csv(folder_path + filename + '-hist.csv', index=False)
 
 output_peaks = pd.DataFrame({'Peaks': peaks})
-output_peaks.to_csv(folder_path + filename + '.csv', index=False)
+output_peaks.to_csv(folder_path + filename + '-peaks.csv', index=False)
 
 #Plot the histogram, with vertical lines at peaks to check the output
 #Figure is also saved
