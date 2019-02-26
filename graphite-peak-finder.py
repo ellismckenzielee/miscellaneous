@@ -10,9 +10,8 @@ import scipy
 import pandas as pd 
 
 #Specify files location, and collect these names using glob
-folder_path = ''
-image_slice_names = glob.glob(folder_path + '/*')
-image_histogram = np.ones(255)
+folder_path = '/'
+image_slice_names = glob.glob(folder_path + '*.tiff')
 image_stack = []
 
 #Prompt user for some additional information about the data
@@ -51,5 +50,6 @@ ax.set_ylabel('Counts')
 ax.set_xlabel('Grayscale Value')
 ax.vlines(peaks[0], 0, image_histogram[peaks[0]])
 ax.vlines(peaks[1], 0, image_histogram[peaks[1]])
+plt.tight_layout()
 plt.savefig(folder_path + filename +'.png')
 plt.show()
