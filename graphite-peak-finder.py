@@ -1,5 +1,6 @@
 #Program allows user to analyze graphite grayscale histogram
 #Made such that RAM being exceeded should not be an issue
+#Output images and csv files are sent to the same folder
 
 #Import relevant modules
 import numpy as np 
@@ -9,9 +10,9 @@ import glob
 import scipy
 import pandas as pd 
 
-#Specify files location, and collect these names using glob
+#Specify files location, and collect these names using glob (tiff files only)
 folder_path = '/'
-image_slice_names = glob.glob(folder_path + '*.tiff')
+image_slice_names = glob.glob(folder_path + '*.tif')
 image_stack = []
 
 #Prompt user for some additional information about the data
