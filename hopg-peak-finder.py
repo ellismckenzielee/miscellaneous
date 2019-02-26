@@ -19,7 +19,7 @@ final_slice = int(input('Which slice should the program finish on?: '))
 filename = input('What would you like to call the file? ')
 
 #Load the image slices and apply median filter, then create three dimensional volume
-for counter, image_slice in enumerate(image_slice_names):
+for counter, image_slice in enumerate(image_slice_names[start_slice:final_slice]):
     print('Working: ', counter)
     image = skimage.io.imread(image_slice)
     image_smoothed = skimage.filters.median(image)
