@@ -36,7 +36,10 @@ peak_location = np.where(image_histogram == peak_value)[0]
 print(peak_location)
 
 output_peak = pd.DataFrame({'Peak Location': peak_location})
-output_peak.to_csv(folder_path + filename + '.csv', index=False)
+output_peak.to_csv(folder_path + filename + '-peaks.csv', index=False)
+
+output_hist = pd.DataFrame({'Grayscale Histogram': image_histogram})
+output_hist.to_csv(folder_path + filename + '-histogram.csv', index=False)
 
 #Plot the histogram, with vertical lines at peaks to check the output
 #Figure is also saved
