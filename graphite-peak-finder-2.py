@@ -12,10 +12,12 @@ import pandas as pd
 
 #Specify files location, and collect these names using glob (tiff files only)
 folder_path = '/'
-image_slice_names = glob.glob(folder_path + '*[0-9][0-9][0-9][0-9].tif')
+image_slice_names = glob.glob()
 image_slice_names = sorted(image_slice_names)
-image_histogram = np.ones(255)
+
+image_histogram = np.zeros(255)
 output = '/'
+bins = np.arange(0, 256)
 
 #Prompt user for some additional information about the data
 start_slice = int(input('Which slice should the program start on?: '))
@@ -27,11 +29,16 @@ for counter, image_slice in enumerate(image_slice_names[start_slice:final_slice]
     print('Working: ', counter)
     image = skimage.io.imread(image_slice)
     image_smoothed = skimage.filters.gaussian(image, 1.1)
-    image_histogram = image_histogram + np.histogram(image_smoothed, bins=255)[0]
+    smoothed_histogram = np.histogram(image_smoothed, bins=np.arange(0, 1, 1/256))[0]
+    print(smoothed_histogram)
+    image_histogram = image_histogram + smoothed_histogram
 
+print(image_histogram)
+plt.plot(image_histogram)
+plt.show()
 
 #Find the peaks using scipy function
-peaks = scipy.signal.find_peaks(image_histogram, prominence=100)[0]
+peaks = scipy.signal.find_peaks(image_histogram, prominence=500)[0]
 print(peaks)
 
 #Output data to file (If user chooses to)
