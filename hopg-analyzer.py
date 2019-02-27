@@ -11,7 +11,8 @@ import pandas as pd
 
 #Specify file location and use glob to get all filenames with type 'tif'
 folder_path = '/'
-image_slice_names = glob.glob(folder_path + '*tif')
+image_slice_names = glob.glob(folder_path + 'HOPG[0-9][0-9][0-9][0-9].tif')
+image_slice_names = sorted(image_slice_names)
 
 #Initialize lists that will be used for plotting
 average_grayscale = []
